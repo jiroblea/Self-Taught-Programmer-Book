@@ -1,4 +1,4 @@
-import __utilities__ as util
+import utilities as util
 import csv
 
 name, age = util.biographies()
