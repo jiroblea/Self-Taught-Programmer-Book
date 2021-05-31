@@ -16,6 +16,13 @@ def checker(board, player, plyr_symbol):
         return False
     return True
 
+def tieChecker(board):
+    if ("1" and "2" and "3" and "4" and "5" and "6" and "7" and "8" and "9") not in board:
+        print("TIE!")
+        return False
+    return True
+
+
 print("TIC-TAC-TOE GAME")
 print("Do you want to play (y/n)? ")
 start_game = input("").lower()
@@ -37,20 +44,33 @@ while game:
     plyr2_symbol = "X"
 
     while True:
+
         print(board)
-        location = str(input(f"{player1}\'s move, choose a number: "))
-        if (location != plyr1_symbol or plyr2_symbol):
-            board = board.replace(location, plyr1_symbol)
+        while True:
+            location = str(input(f"{player1}\'s move, choose a number: "))
+            if (location != (plyr1_symbol or plyr2_symbol or  " ")):
+                board = board.replace(location, plyr1_symbol)
+                break
+            else: 
+                print("That location is already taken. Try another one.")
 
         if checker(board, player1, plyr1_symbol) == False:
             break
+        elif tieChecker(board) == False:
+            break
 
         print(board)
-        location = str(input(f"{player2}\'s move, choose a number: "))
-        if (location != plyr1_symbol or plyr2_symbol):
-            board = board.replace(location, plyr2_symbol)
+        while True:
+            location = str(input(f"{player2}\'s move, choose a number: "))
+            if (location != plyr1_symbol or plyr2_symbol or " "):
+                board = board.replace(location, plyr2_symbol)
+                break
+            else: 
+                print("That location is already taken. Try another one.")
         
         if checker(board, player2, plyr2_symbol) == False:
+            break
+        elif tieChecker(board) == False:
             break
 
     print("Do you want to play again (y/n)? ")
