@@ -31,6 +31,8 @@ class Adult(Person):
     def drive(self, car_brand):
         print("{} is driving their {}.".format(self.name, car_brand))
 
+    def drink_alcohol(self, alcohol_brand):
+        return alcohol_brand
 
 
 def main():
@@ -47,9 +49,10 @@ def main():
     print("I am {}, {} years of age.".format(becky.name, becky.age))
     becky.talk("I drive a lot!")
     becky.drive("Volkswagen")
+    print("I can drink {}.".format(becky.drink_alcohol("rum")))
 
     sara = Person("Sara", 27)
-    print(f"I am {sara.name}, {sara.age} years of age.") # .format(sara.name, sara.age)
+    print(f"I am {sara.name}, {sara.age} years of age.")
     sara.talk("I walked a lot!")
     sara.walk(7)
 
